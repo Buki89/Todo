@@ -11,3 +11,4 @@ export { default as Input } from "./Input";
 export { default as Loading } from "./Loading";
 export { default as PriorityInput } from "./PriorityInput";
 export { default as PrivateRoute } from "./PrivateRoute";
+export { default as Screen } from "./Screen";
