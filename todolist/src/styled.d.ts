@@ -11,6 +11,7 @@ declare module "styled-components" {
       secondary: IPalette;
       error: IPalette;
       border: IPalette;
+      text: IPalette;
     };
     media: {
       mobile: string;

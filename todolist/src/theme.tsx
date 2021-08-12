@@ -18,6 +18,9 @@ const theme: DefaultTheme = {
     border: {
       main: "#8e81b1",
     },
+    text: {
+      main: "#000000",
+    },
   },
   media: {
     mobile: "450px",
