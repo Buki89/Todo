@@ -16,8 +16,9 @@ const ErrorMessage = styled(ErrorMessageBase)`
   left: 0;
 `;
 
-const Label = styled.label`
+const Label = styled.label<{ error?: boolean }>`
   margin-bottom: 0.25rem;
+  color: ${({ theme, error }) => error && theme.colors.error.main};
 `;
 
 const Box = styled.div`
@@ -61,7 +62,7 @@ const PriorityInput: FC<PriorityInputProps> = ({ input, meta }) => {
 
   return (
     <Container>
-      <Label>{label}</Label>
+      <Label error={err}>{label}</Label>
       <Box>
         <Value error={err}>
           {input.value}
