@@ -32,10 +32,10 @@ const CardHeaderContainer: FC<CardHeaderContainerProps> = ({ title }) => {
       {pathname === "/create" ? (
         <FaChevronLeft onClick={handleClick} />
       ) : (
-        <FiMenu />
+        <MdTimer />
       )}
       <p>{title}</p>
-      <MdTimer />
+      <FiMenu />
     </Container>
   );
 };
