@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { VFC } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { ThemeProvider } from "styled-components";
+import { PrivateRoute } from "./components";
+import { AuthProvider, TaskProvider } from "./context";
+import { CreateTaskScreen, DashboardScreen, LoginScreen } from "./screens";
+import theme from "./theme";
 
-function App() {
+const App: VFC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <TaskProvider>
+      <AuthProvider>
+        <ThemeProvider theme={theme}>
+          <Router>
+            <Switch>
+              <PrivateRoute
+                to="/"
+                path="/create"
+                component={CreateTaskScreen}
+              />
+              <PrivateRoute
+                to="/"
+                path="/dashboard"
+                component={DashboardScreen}
+              />
+              <Route path="/" component={LoginScreen} exact={true} />
+            </Switch>
+          </Router>
+        </ThemeProvider>
+      </AuthProvider>
+    </TaskProvider>
   );
-}
+};
 
 export default App;
