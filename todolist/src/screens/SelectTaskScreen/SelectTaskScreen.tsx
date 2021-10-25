@@ -1,11 +1,17 @@
 import React, { FC } from "react";
-import { ActionBar, Card, CardHeader, Screen } from "../../components";
-import { CardHeaderContainer, TaskList } from "../../containers";
+import {
+  ActionBar,
+  Card,
+  CardHeader,
+  CategoryList,
+  Screen,
+} from "../../components";
+import { CardHeaderContainer } from "../../containers";
 import { format } from "date-fns";
 
-type DashboardScreenProps = {};
+type SelectTaskScreenProps = {};
 
-const DashboardScreen: FC<DashboardScreenProps> = () => {
+const SelectTaskScreen: FC<SelectTaskScreenProps> = () => {
   const formattedDate = format(new Date(), "d LLL");
   return (
     <Screen>
@@ -14,10 +20,10 @@ const DashboardScreen: FC<DashboardScreenProps> = () => {
           <CardHeaderContainer title={formattedDate} />
           <ActionBar />
         </CardHeader>
-        <TaskList />
+        <CategoryList />
       </Card>
     </Screen>
   );
 };
 
-export default DashboardScreen;
+export default SelectTaskScreen;

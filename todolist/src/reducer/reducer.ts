@@ -1,11 +1,13 @@
+type Category = "Idea" | "Food" | "Work" | "Sport" | "Home" | "";
+
 export type Task = {
   id: string;
   taskName: string;
   createdAt?: string;
-  deadline: string;
+  deadline?: string;
   completed: boolean;
   priority: number;
-  category: string;
+  category: Category;
 };
 
 export type State = {

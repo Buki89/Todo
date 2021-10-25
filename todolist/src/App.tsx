@@ -3,7 +3,12 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { PrivateRoute } from "./components";
 import { AuthProvider, TaskProvider } from "./context";
-import { CreateTaskScreen, DashboardScreen, LoginScreen } from "./screens";
+import {
+  CreateTaskScreen,
+  DashboardScreen,
+  LoginScreen,
+  SelectTaskScreen,
+} from "./screens";
 import theme from "./theme";
 
 const App: VFC = () => {
@@ -17,6 +22,11 @@ const App: VFC = () => {
                 to="/"
                 path="/create"
                 component={CreateTaskScreen}
+              />
+              <PrivateRoute
+                to="/"
+                path="/select-task"
+                component={SelectTaskScreen}
               />
               <PrivateRoute
                 to="/"

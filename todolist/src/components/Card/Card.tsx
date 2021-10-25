@@ -16,7 +16,6 @@ const Container = styled.div`
 `;
 
 const Card: FC = ({ children }) => {
-  console.log(window.innerHeight);
   return <Container>{children}</Container>;
 };
 

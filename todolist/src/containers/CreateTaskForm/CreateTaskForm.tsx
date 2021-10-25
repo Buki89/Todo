@@ -8,7 +8,7 @@ import {
   PriorityInput,
   SelectInput,
 } from "../../components";
-import { Type } from "../../reducer";
+import { Task, Type } from "../../reducer";
 import { isRequired } from "../../validators";
 import { v4 as uuidv4 } from "uuid";
 import { useHistory } from "react-router-dom";
@@ -46,14 +46,6 @@ const Button = styled(ButtonBase)`
   padding: 1rem 0;
 `;
 
-type Values = {
-  taskName: string;
-  category: string;
-  deadline: string;
-  notification: string;
-  priority: number;
-};
-
 const CreateTaskForm: FC = () => {
   const { dispatch } = useTasksContext();
   const history = useHistory();
@@ -61,7 +53,7 @@ const CreateTaskForm: FC = () => {
   return (
     <Container>
       <Form
-        onSubmit={(values: Values) => {
+        onSubmit={(values: Task) => {
           dispatch({
             type: Type.addTask,
             payload: {

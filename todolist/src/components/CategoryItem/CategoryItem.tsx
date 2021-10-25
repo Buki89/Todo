@@ -1,7 +1,8 @@
-import React, { VFC } from "react";
+import React, { VFC, useCallback } from "react";
 import styled, { keyframes } from "styled-components";
 import { FaChevronRight } from "react-icons/fa";
 import { useTasksContext } from "../../context/Tasks/tasks-context";
+import { useHistory } from "react-router-dom";
 
 const changeColor = keyframes`
   from {
@@ -64,12 +65,14 @@ type CategoryItemProps = {
 
 const CategoryItem: VFC<CategoryItemProps> = ({ category, icon }) => {
   const { state } = useTasksContext();
-  console.log("state", state.tasks);
+  const history = useHistory();
   const tasks =
     state?.tasks?.filter((task) => task.category === category).length ?? 0;
 
+  const handleClick = useCallback(() => history.push("/create"), [history]);
+
   return (
-    <Container>
+    <Container onClick={handleClick}>
       <FlexBox>
         {icon}
         <CategoryContainer>

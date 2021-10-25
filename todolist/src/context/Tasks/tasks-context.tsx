@@ -1,5 +1,6 @@
 import React, { createContext, FC, useContext, useReducer } from "react";
 import Reducer, { Actions, State } from "../../reducer";
+import { mockData } from "./__mock";
 
 type IContextProps = {
   state: State;
@@ -7,7 +8,7 @@ type IContextProps = {
 };
 
 const initialState = {
-  tasks: [],
+  tasks: mockData,
   uid: "",
 } as State;
 

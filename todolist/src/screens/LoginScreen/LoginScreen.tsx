@@ -22,7 +22,7 @@ const Icon = styled(GoChecklist)`
   margin-left: 1rem;
 `;
 
-const IConContainer = styled.div`
+const IconContainer = styled.div`
   display: flex;
   justify-content: center;
   margin: 2rem 0 1.5rem;
@@ -39,9 +39,9 @@ const LoginScreen: FC<LoginScreenProps> = () => {
   return (
     <Screen>
       <Card>
-        <IConContainer>
+        <IconContainer>
           <Icon color="#fff" size="5rem" />
-        </IConContainer>
+        </IconContainer>
         <Title>TODO list</Title>
         <Container>
           <LoginForm />

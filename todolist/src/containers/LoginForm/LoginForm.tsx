@@ -1,7 +1,7 @@
 import React, { FC, useState, useCallback } from "react";
 import { Field, Form } from "react-final-form";
 import styled from "styled-components";
-import { Button as ButtonBase, Input, Loading } from "../../components";
+import { Button as ButtonBase, Input } from "../../components";
 import { useHistory } from "react-router-dom";
 import { isEmail, isRequired, length } from "../../validators";
 import { useContext } from "react";
@@ -25,6 +25,10 @@ const SForm = styled.form`
 
 const Button = styled(ButtonBase)`
   align-self: flex-end;
+  width: 100%;
+  height: 2.75rem;
+  font-size: 1.125rem;
+  margin: 0 1rem;
 `;
 
 const ButtonContainer = styled.div`
@@ -32,13 +36,6 @@ const ButtonContainer = styled.div`
   margin: 1rem 0;
   justify-content: center;
   flex: 2;
-`;
-
-const LoadingContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 3.25rem 0;
 `;
 
 type LoginFormProps = {};
@@ -62,29 +59,20 @@ const LoginForm: FC<LoginFormProps> = () => {
       onSubmit={handleSubmitForm}
       render={({ handleSubmit }) => (
         <SForm onSubmit={handleSubmit}>
-          {loading ? (
-            <LoadingContainer>
-              <Loading />
-            </LoadingContainer>
-          ) : (
-            <>
-              <Field
-                name="email"
-                validate={composeValidators(isEmail, isRequired)}
-              >
-                {(props) => <Input type="email" {...props} />}
-              </Field>
-              <Field
-                name="password"
-                validate={composeValidators(isRequired, length)}
-              >
-                {(props) => <Input type="password" {...props} />}
-              </Field>
-              <ButtonContainer>
-                <Button type="submit">Login</Button>
-              </ButtonContainer>
-            </>
-          )}
+          <Field name="email" validate={composeValidators(isEmail, isRequired)}>
+            {(props) => <Input type="email" {...props} />}
+          </Field>
+          <Field
+            name="password"
+            validate={composeValidators(isRequired, length)}
+          >
+            {(props) => <Input type="password" {...props} />}
+          </Field>
+          <ButtonContainer>
+            <Button type="submit" disabled={loading} loading={loading}>
+              Login
+            </Button>
+          </ButtonContainer>
         </SForm>
       )}
     />
